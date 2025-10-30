@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Asimovian&display=swap');
+
+:root{
+    --text-color: white;
+    --primary-color: white;
+    --secondary-color: darkgray;
+}
+
+body {
+    background-color: #121212;
+    color: var(--text-color);
+    font-family: 'Asimovian', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.login-card {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 50px;
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+.login-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 500px var(--secondary-color);
+}
+.btn {
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+    width: 70%;
+    border: 4px solid var(--secondary-color);
+}
+.btn:hover {
+    transform: scale(1.05);
+    width: 90%;
+}
+.form-control{
+    border-radius: 50px;
+    border: 1px dashed var(--secondary-color);
+}
+.form-control:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary-color);
+}
