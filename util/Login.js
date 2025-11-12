@@ -1,13 +1,21 @@
-let currentPageId = 'homepage';
+const loginForm = document.getElementById('loginForm');
+const usernameInput = document.getElementById('usernameInput');
+const passwordInput = document.getElementById('passwordInput');
+const loginPage = document.getElementById('login-page');
+const appContent = document.getElementById('app-content');
 
-async function handleLogin(e) {
-    e.preventDefault();
-    const loginPage = document.getElementById('login-page');
-    const appContent = document.getElementById('app-content');
-    const loginErrorAlert = document.getElementById('loginErrorAlert');
-    const username = document.getElementById('usernameInput').value;
-    const password = document.getElementById('passwordInput').value;
-    if (username === 'admin' && password === '123') {
+const VALID_USERNAME = 'admin';
+const VALID_PASSWORD = '123';
+
+function handleLogin(event) {
+    event.preventDefault();
+
+    const enteredUsername = usernameInput.value;
+    const enteredPassword = passwordInput.value;
+
+    // 1. Validate Credentials
+    if (enteredUsername === VALID_USERNAME && enteredPassword === VALID_PASSWORD) {
+        // 2. Successful Login
         Swal.fire({
             icon: 'success',
             title: 'Welcome to the Dashboard!',
@@ -19,71 +27,71 @@ async function handleLogin(e) {
             color: '#e0e0e0',
             timerProgressBar: true
         });
-        loginPage.classList.add('d-none');
-        appContent.classList.remove('d-none');
-        loginErrorAlert.classList.add('d-none');
-        navigatePage(currentPageId);
+            // Hide login page and show application content
+            loginPage.classList.add('d-none');
+            appContent.classList.remove('d-none');
     } else {
-        await Swal.fire({
+        // 3. Failed Login
+        Swal.fire({
             icon: 'error',
-            title: 'Invalid Pit Stop!',
-            text: 'Incorrect username or password. Check your setup.',
+            title: 'Login Failed ❌',
+            text: 'Invalid username or password.',
             confirmButtonText: 'Retry',
             background: '#1a1a1a',
             color: '#e0e0e0',
             confirmButtonColor: '#E10600'
         });
-        document.getElementById('passwordInput').value = '';
+        passwordInput.value = '';
+        usernameInput.value = '';
     }
 }
 
-async function handleLogout() {
-    const loginPage = document.getElementById('login-page');
-    const appContent = document.getElementById('app-content');
-    const result = await Swal.fire({
-        title: 'Ready for the Pit Stop?',
-        text: "You will be logged out of the KPOS system.",
+// Attach the event listener to the form
+if (loginForm) {
+    loginForm.addEventListener('submit', handleLogin);
+}
+
+// --- Logout Logic (Often placed in the same file or a separate one) ---
+
+const logoutBtn = document.getElementById('logoutBtn');
+
+function handleLogout() {
+    Swal.fire({
+        title: 'Are you sure you want to log out?',
         icon: 'question',
         showCancelButton: true,
-        confirmButtonColor: '#E10600',
+        confirmButtonColor: '#d33',
         cancelButtonColor: '#6c757d',
-        confirmButtonText: 'Yes, Logout',
+        confirmButtonText: 'Yes, log me out!',
+        cancelButtonText: 'Stay logged in',
         background: '#1a1a1a',
         color: '#e0e0e0'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Re-show the login page and hide the app content
+            appContent.classList.add('d-none');
+            loginPage.classList.remove('d-none');
+
+            // Clear inputs for security/next login attempt
+            usernameInput.value = '';
+            passwordInput.value = '';
+
+            Swal.fire({
+                icon: 'info',
+                toast: true,
+                title: 'Logged out.',
+                text: 'You have successfully logged out.',
+                showConfirmButton: false,
+                position: 'top-end',
+                timer: 1500,
+                background: '#1a1a1a',
+                color: '#e0e0e0'
+            });
+        }
     });
-
-    if (result.isConfirmed) {
-        // Use Bootstrap d-none class for hiding
-        appContent.classList.add('d-none');
-        loginPage.classList.remove('d-none');
-        // Reset navigation state
-        currentPageId = 'homepage';
-
-        // Success message after logging out (can be a small modal or toast)
-        await Swal.fire({
-            icon: 'info',
-            toast: true,
-            title: 'Race Concluded.',
-            text: 'You have successfully logged out. See you next race!',
-            showConfirmButton: false,
-            position: 'top-end',
-            timer: 1500,
-            background: '#1a1a1a',
-            color: '#e0e0e0'
-        });
-    }
 }
 
-function initializeLogin() {
-    const loginForm = document.getElementById('loginForm');
-    const logoutBtn = document.getElementById('logoutBtn');
-
-    if (loginForm) {
-        loginForm.addEventListener('submit', handleLogin);
-    }
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', handleLogout);
-    }
+// Attach logout listener
+if (logoutBtn) {
+    logoutBtn.addEventListener('click', handleLogout);
 }
-
-
