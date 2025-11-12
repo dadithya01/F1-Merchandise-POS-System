@@ -11,3 +11,15 @@ body {
     color: var(--text-color);
     font-family: 'Asimovian', --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+
+#login-btn{
+    border-radius: 50px;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+    width: 10rem;
+}
+
+#login-btn:hover{
+    transform: scale(1.05);
+    width: 21rem;
+}

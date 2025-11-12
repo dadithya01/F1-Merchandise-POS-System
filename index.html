@@ -10,36 +10,28 @@
 </head>
 <body>
 
-<!-- Login Page (Bootstrap version) -->
+<!-- Login Page -->
 <div id="login-page" class="d-flex align-items-center justify-content-center vh-100">
     <div class="login-card p-4 rounded-3 shadow w-100" style="max-width: 400px;">
-        <h2 class="card-title text-center mb-4 fs-3 fw-bolder text-danger">🏎️ KPOS Login</h2>
-        <form id="loginForm" class="mt-4">
+        <h2 class="card-title text-center mb-4 fs-1 fw-bolder text-danger">🏎️ Apex Login</h2>
+        <form id="loginForm" class="mt-4 text-center">
             <div class="mb-3">
-                <label for="usernameInput" class="form-label text-light">Username</label>
+                <label for="usernameInput" class="form-label text-light fs-3">Username</label>
                 <div class="input-group">
                     <span class="input-group-text bg-secondary border-secondary text-white"><i class="fas fa-user"></i></span>
-                    <input type="text" id="usernameInput" value="admin" required
-                           class="form-control bg-dark border-secondary text-white">
+                    <input type="text" id="usernameInput" value="admin" required class="form-control bg-dark border-secondary text-white">
                 </div>
             </div>
             <div class="mb-4">
-                <label for="passwordInput" class="form-label text-light">Password</label>
+                <label for="passwordInput" class="form-label text-light fs-3">Password</label>
                 <div class="input-group">
                     <span class="input-group-text bg-secondary border-secondary text-white"><i class="fas fa-lock"></i></span>
-                    <input type="password" id="passwordInput" value="123" required
-                           class="form-control bg-dark border-secondary text-white">
+                    <input type="password" id="passwordInput" value="123" required class="form-control bg-dark border-secondary text-white">
                 </div>
             </div>
-            <div class="alert alert-danger d-none" id="loginErrorAlert" role="alert">
-                Invalid Pit Stop! Check your credentials and try again.
-            </div>
             <div class="d-grid">
-                <button type="submit" class="btn f1-red-btn text-white fw-bold py-2">
-                    Login
-                </button>
+                <button type="submit" id="login-btn" class="btn btn-outline-light fs-3">Login</button>
             </div>
-            <p class="mt-3 text-center text-muted small">Hint: Try 'admin' / '123'</p>
         </form>
     </div>
 </div>
@@ -50,7 +42,7 @@
     <!-- Navigation Bar (Bootstrap) -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-lg">
         <div class="container-fluid">
-            <a class="navbar-brand fs-4 fw-bolder text-danger" href="#" data-target="homepage">KPOS</a>
+            <a class="navbar-brand fs-4 fw-bolder text-danger" href="#" data-target="homepage">🏎 Apex</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -73,7 +65,7 @@
                     </li>
                     <li class="nav-item ms-lg-3">
                         <button id="logoutBtn" class="btn btn-sm btn-outline-danger fw-bold">
-                            <i class="fas fa-sign-out-alt me-1"></i> 🏁 Logout
+                            <i class="fas fa-sign-out-alt me-1"></i> Logout
                         </button>
                     </li>
                 </ul>
@@ -84,9 +76,8 @@
     <div class="container mt-4">
 
         <!--Homepage Section-->
-
         <div id="homepage" class="page-section active">
-            <h1 class="mb-4">Welcome to KPOS</h1>
+            <h1 class="mb-4">Welcome to Apex</h1>
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
                     <div class="card text-center h-100 shadow card-button" data-target="customer-page">
@@ -97,7 +88,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="card text-center h-100 shadow card-button" data-target="item-page">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -107,7 +97,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="card text-center h-100 shadow card-button" data-target="order-page">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -117,7 +106,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="col">
                     <div class="card text-center h-100 shadow card-button" data-target="order-history-page">
                         <div class="card-body d-flex flex-column justify-content-center align-items-center">
@@ -131,10 +119,8 @@
         </div>
 
         <!--Customer Management Section-->
-
         <div id="customer-page" class="page-section ">
             <h1 class="mb-4">Customer Management</h1>
-
             <div class="card mb-4">
                 <div class="card-header">Customer Details</div>
                 <div class="card-body">
@@ -199,11 +185,8 @@
         </div>
 
         <!--Item Management Section-->
-
         <div id="item-page" class="page-section ">
             <h1 class="mb-4">Item Management</h1>
-
-
             <div class="card mb-4">
                 <div class="card-header">Item Details</div>
                 <div class="card-body">
@@ -224,7 +207,7 @@
                                 <textarea class="form-control" id="itemDescriptionInput" rows="2"></textarea>
                             </div>
                             <div class="col-md-6">
-                                <label for="itemPriceInput" class="form-label">Price</label>
+                                <label for="itemPriceInput" class="form-label">Price :$</label>
                                 <input type="number" class="form-control" id="itemPriceInput" step="0.01" required>
                             </div>
                             <div class="col-md-6">
@@ -267,7 +250,6 @@
         </div>
 
         <!--Order Management Section-->
-
         <div id="order-page" class="page-section ">
             <h1 class="mb-4">New Order</h1>
 
@@ -386,57 +368,12 @@
             </div>
         </div>
     </div>
-<!--    &lt;!&ndash; Page Content Sections (Bootstrap) &ndash;&gt;-->
-<!--    <div class="container mt-4">-->
-<!--        &lt;!&ndash; Dashboard Page &ndash;&gt;-->
-<!--        <div id="homepage" class="page-section active-page p-4 bg-dark rounded-3 shadow-lg border border-secondary">-->
-<!--            <h1 class="fs-2 fw-bolder text-danger mb-4">Dashboard</h1>-->
-<!--            <p class="text-secondary">Welcome to the F1 Merchandise KPOS. Ready to hit the track and process some sales?</p>-->
-<!--            <div class="row mt-4 g-4">-->
-<!--                <div class="col-md-4">-->
-<!--                    <div class="p-3 bg-secondary-subtle rounded-3 text-dark">-->
-<!--                        <p class="text-sm text-muted mb-1">Sales Today</p>-->
-<!--                        <p class="fs-4 fw-bold text-success">$3,450.00</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-4">-->
-<!--                    <div class="p-3 bg-secondary-subtle rounded-3 text-dark">-->
-<!--                        <p class="text-sm text-muted mb-1">Total Orders</p>-->
-<!--                        <p class="fs-4 fw-bold text-info">42</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--                <div class="col-md-4">-->
-<!--                    <div class="p-3 bg-secondary-subtle rounded-3 text-dark">-->
-<!--                        <p class="text-sm text-muted mb-1">Active Customers</p>-->
-<!--                        <p class="fs-4 fw-bold text-danger">128</p>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Other Pages (Initially Hidden with d-none) &ndash;&gt;-->
-<!--        <div id="customer-page" class="page-section d-none p-4 bg-dark rounded-3 shadow-lg border border-secondary">-->
-<!--            <h1 class="fs-2 fw-bolder text-info">Customer Management</h1>-->
-<!--            <p class="text-secondary mt-2">Manage your high-speed F1 fanbase records here.</p>-->
-<!--        </div>-->
-<!--        <div id="item-page" class="page-section d-none p-4 bg-dark rounded-3 shadow-lg border border-secondary">-->
-<!--            <h1 class="fs-2 fw-bolder text-warning">Merchandise Inventory</h1>-->
-<!--            <p class="text-secondary mt-2">Manage the stock of caps, shirts, and high-performance racing gear.</p>-->
-<!--        </div>-->
-<!--        <div id="order-page" class="page-section d-none p-4 bg-dark rounded-3 shadow-lg border border-secondary">-->
-<!--            <h1 class="fs-2 fw-bolder text-success">New Order Entry</h1>-->
-<!--            <p class="text-secondary mt-2">Processing sales at race pace!</p>-->
-<!--        </div>-->
-<!--        <div id="order-history-page" class="page-section d-none p-4 bg-dark rounded-3 shadow-lg border border-secondary">-->
-<!--            <h1 class="fs-2 fw-bolder text-light">Order History Review</h1>-->
-<!--            <p class="text-secondary mt-2">Review all past transactions and check for podium finishes.</p>-->
-<!--        </div>-->
-<!--    </div>-->
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://kit.fontawesome.com/55e02a05f5.js" crossorigin="anonymous"></script>
 
 <script src="util/PageNavigation.js"></script>
 <script src="util/Login.js"></script>
